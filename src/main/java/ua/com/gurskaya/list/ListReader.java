@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ListReader implements Runnable{
-    List list = new ArrayList();
+    private List<String> list = new ArrayList<>();
 
-    public List getList() {
+    public List<String> getList() {
         return list;
     }
 
@@ -19,4 +19,3 @@ public class ListReader implements Runnable{
         }
     }
 }
-

@@ -5,7 +5,7 @@ public class Starter {
 
     public static void main(String[] args) {
         ListReader listReader = new ListReader();
-        ListWriter listWriter = new ListWriter(listReader);
+        ListWriter listWriter = new ListWriter(listReader.getList());
 
         Thread threadReader = new Thread(listReader);
         Thread threadWriter = new Thread(listWriter);
@@ -13,5 +13,4 @@ public class Starter {
         threadReader.start();
         threadWriter.start();
     }
-
 }

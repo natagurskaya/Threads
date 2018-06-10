@@ -5,23 +5,24 @@ import java.util.List;
 
 public class ListWriter implements Runnable {
 
-    private ListReader listReader;
+    private static final String PATH_TO_FILE = "src/main/resources/list.txt";
 
-    public ListWriter(ListReader listReader) {
-        this.listReader = listReader;
+    private List<String> list;
+
+    public ListWriter(List list) {
+        this.list = list;
     }
 
     public void run() {
-        File file = new File("src/main/resources/list.txt");
-        while(true) {
+        File file = new File(PATH_TO_FILE);
+        while (true) {
             try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true))) {
                 Thread.sleep(15000);
-                for (int i = 0; i < listReader.getList().size(); i++) {
-                    bufferedWriter.write(String.valueOf(listReader.getList().get(i)));
+                for (String element : list) {
+                    bufferedWriter.write(element);
                     bufferedWriter.newLine();
-                    bufferedWriter.flush();
                 }
-                listReader.getList().clear();
+                list.clear();
             } catch (InterruptedException e) {
                 throw new RuntimeException("Thread is interrupted", e);
             } catch (IOException e) {
