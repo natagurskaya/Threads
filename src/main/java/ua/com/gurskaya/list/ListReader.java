@@ -1,11 +1,12 @@
 package ua.com.gurskaya.list;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class ListReader implements Runnable{
-    private List<String> list = new ArrayList<>();
+    private List<String> list = Collections.synchronizedList(new ArrayList<String>());
 
     public List<String> getList() {
         return list;
